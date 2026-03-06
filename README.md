@@ -3,7 +3,7 @@
 ## Project Overview
 This project performs a comprehensive Exploratory Data Analysis (EDA) on a marketing campaign dataset. The analysis aims to identify trends in campaign performance, evaluate the ROI of various channels, and understand customer segment behavior to optimize marketing strategies.
 
-## Project Structure
+## Repository Structure
 - **/dataset**: Contains the raw and processed CSV files (e.g., `marketing_campaign_dataset.csv`).
 - **/notebooks**: Jupyter Notebooks for step-by-step analysis and visualization.
 - **/scripts**: Python scripts for modular data cleaning or helper functions.
@@ -22,15 +22,6 @@ The dataset includes 200,000 records with the following key features:
 The data for this project was obtained from Kaggle:
 [Marketing Campaign Performance Dataset](https://www.kaggle.com/datasets/manishabhatt22/marketing-campaign-performance-dataset)
 
-## Technology Stack
-- **Environment**: Conda
-- **IDE**: VSCode
-- **Version Control**: GitHub
-- **Language**: Python 3.10
-- **Libraries**: Pandas, NumPy, Matplotlib, Seaborn, Jupyter
 
 ## Setup Instructions
-1. **Clone the repository**:
-   ```bash
-   git clone <repository-url>
-   cd marketing-eda-python
+
