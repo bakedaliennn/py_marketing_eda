@@ -1,0 +1,64 @@
+section,group,metric,value
+regression_metrics,linear_regression,r2,0.28063810474172146
+regression_metrics,linear_regression,mae,1.9577946328780633
+regression_metrics,linear_regression,rmse,2.5197522342349177
+regression_metrics,linear_regression,train_rows,150000.0
+regression_metrics,linear_regression,test_rows,50000.0
+top_coefficients,Conversion_Rate,coefficient,5.460237589619356
+top_coefficients,Campaign_Type_Search,coefficient,2.551570713161553
+top_coefficients,Channel_Used_YouTube,coefficient,-1.9922384908363209
+top_coefficients,Target_Audience_Men 18-24,coefficient,1.2143477040575386
+top_coefficients,Campaign_Type_Social Media,coefficient,1.1862779838688007
+top_coefficients,Target_Audience_Women 25-34,coefficient,1.125082323456084
+top_coefficients,Channel_Used_Facebook,coefficient,-0.8772467731178747
+top_coefficients,Campaign_Type_Email,coefficient,0.7924712428268076
+top_coefficients,Target_Audience_Men 25-34,coefficient,0.6920462019467175
+top_coefficients,Campaign_Type_Influencer,coefficient,0.6871472178731511
+top_coefficients,Channel_Used_Google Ads,coefficient,0.4160484210028563
+top_coefficients,Channel_Used_Instagram,coefficient,-0.3065438817429059
+top_coefficients,Target_Audience_Women 35-44,coefficient,0.2587182636134189
+top_coefficients,Channel_Used_Website,coefficient,0.17823984932293666
+top_coefficients,Customer_Segment_Health & Wellness,coefficient,0.0544450649097174
+silhouette_scores,k_3,silhouette_score,0.13199540602674895
+silhouette_scores,k_4,silhouette_score,0.1345216465838567
+silhouette_scores,k_5,silhouette_score,0.13613413772748548
+silhouette_scores,k_6,silhouette_score,0.13492431450460976
+silhouette_scores,model_selection,best_k,5.0
+cluster_sizes,cluster_0,count,46802.0
+cluster_sizes,cluster_1,count,31294.0
+cluster_sizes,cluster_2,count,33117.0
+cluster_sizes,cluster_3,count,38656.0
+cluster_sizes,cluster_4,count,50131.0
+cluster_feature_means,cluster_0,Conversion_Rate,0.06692306525362164
+cluster_feature_means,cluster_0,Acquisition_Cost,11255.986503354557
+cluster_feature_means,cluster_0,ROI,4.627347562069997
+cluster_feature_means,cluster_0,Clicks,263.67841117900946
+cluster_feature_means,cluster_0,Impressions,5062.79684628862
+cluster_feature_means,cluster_0,Engagement_Score,8.243921199948721
+cluster_feature_means,cluster_1,Conversion_Rate,0.12978838755032915
+cluster_feature_means,cluster_1,Acquisition_Cost,10632.724233718924
+cluster_feature_means,cluster_1,ROI,9.68006052278392
+cluster_feature_means,cluster_1,Clicks,345.25359493832684
+cluster_feature_means,cluster_1,Impressions,5426.020099699623
+cluster_feature_means,cluster_1,Engagement_Score,5.373458170895379
+cluster_feature_means,cluster_2,Conversion_Rate,0.09141029984600055
+cluster_feature_means,cluster_2,Acquisition_Cost,14575.561784883896
+cluster_feature_means,cluster_2,ROI,4.882325255910861
+cluster_feature_means,cluster_2,Clicks,638.2295799740315
+cluster_feature_means,cluster_2,Impressions,3663.2733339372526
+cluster_feature_means,cluster_2,Engagement_Score,5.61777938822961
+cluster_feature_means,cluster_3,Conversion_Rate,0.08431200848509934
+cluster_feature_means,cluster_3,Acquisition_Cost,19969.44102700745
+cluster_feature_means,cluster_3,ROI,3.5122486625620866
+cluster_feature_means,cluster_3,Clicks,280.3157595198675
+cluster_feature_means,cluster_3,Impressions,8851.565345612582
+cluster_feature_means,cluster_3,Engagement_Score,5.6706074089403975
+cluster_feature_means,cluster_4,Conversion_Rate,0.06681002174303326
+cluster_feature_means,cluster_4,Acquisition_Cost,11304.962319722326
+cluster_feature_means,cluster_4,ROI,4.6315454549081405
+cluster_feature_means,cluster_4,Clicks,261.5644411641499
+cluster_feature_means,cluster_4,Impressions,4861.561568690032
+cluster_feature_means,cluster_4,Engagement_Score,2.6443717460254135
+pca,variance,pc1_explained_ratio,0.24216519728453847
+pca,variance,pc2_explained_ratio,0.1823634173504993
+pca,variance,pc1_pc2_total_ratio,0.42452861463503777

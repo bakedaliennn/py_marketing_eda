@@ -1,0 +1,50 @@
+section,group,metric,value
+channel_roi,Google Ads,count,33438.0
+channel_roi,Google Ads,mean,6.237697972366768
+channel_roi,Google Ads,median,5.72155
+channel_roi,Google Ads,std,3.153575668774315
+channel_roi,Website,count,33360.0
+channel_roi,Website,mean,5.995636435851319
+channel_roi,Website,median,5.4549
+channel_roi,Website,std,3.0747640886536662
+channel_roi,Email,count,33599.0
+channel_roi,Email,mean,5.842202473287895
+channel_roi,Email,median,5.335
+channel_roi,Email,std,3.005751483458051
+channel_roi,Instagram,count,33392.0
+channel_roi,Instagram,mean,5.384989889793963
+channel_roi,Instagram,median,4.85185
+channel_roi,Instagram,std,2.896045162846899
+channel_roi,Facebook,count,32819.0
+channel_roi,Facebook,mean,4.682894359974405
+channel_roi,Facebook,median,4.2337
+channel_roi,Facebook,std,2.553675428936604
+channel_roi,YouTube,count,33392.0
+channel_roi,YouTube,mean,3.31672735984667
+channel_roi,YouTube,median,2.96295
+channel_roi,YouTube,std,1.9428333710873391
+audience_conversion,Men 18-24,count,40258.0
+audience_conversion,Men 18-24,mean,0.09323657658105221
+audience_conversion,Men 18-24,std,0.05098977546773622
+audience_conversion,Women 25-34,count,40013.0
+audience_conversion,Women 25-34,mean,0.09138062629645366
+audience_conversion,Women 25-34,std,0.050738034220914
+audience_conversion,Men 25-34,count,40023.0
+audience_conversion,Men 25-34,mean,0.08428370936711391
+audience_conversion,Men 25-34,std,0.04696592395083661
+audience_conversion,Women 35-44,count,39687.0
+audience_conversion,Women 35-44,mean,0.07780825711190062
+audience_conversion,Women 35-44,std,0.04340264017453833
+audience_conversion,All Ages,count,40019.0
+audience_conversion,All Ages,mean,0.07391963567305529
+audience_conversion,All Ages,std,0.04130480057220422
+top_abs_correlation,ROI__Acquisition_Cost,abs_corr,0.27382418409454706
+top_abs_correlation,Acquisition_Cost__ROI,abs_corr,0.27382418409454706
+top_abs_correlation,Conversion_Rate__ROI,abs_corr,0.19893802655482784
+top_abs_correlation,ROI__Conversion_Rate,abs_corr,0.19893802655482784
+top_abs_correlation,Impressions__Clicks,abs_corr,0.17773843369868142
+top_abs_correlation,Clicks__Impressions,abs_corr,0.17773843369868142
+ttest_google_vs_youtube,google_vs_youtube,google_n,33438.0
+ttest_google_vs_youtube,google_vs_youtube,youtube_n,33392.0
+ttest_google_vs_youtube,google_vs_youtube,t_stat,144.17623375173076
+ttest_google_vs_youtube,google_vs_youtube,p_value,0.0
