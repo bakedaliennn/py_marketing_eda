@@ -7,7 +7,7 @@ from pathlib import Path
 
 
 DEFAULT_DATASET_REF = "manishabhatt22/marketing-campaign-performance-dataset"
-DEFAULT_CSV_NAME = "marketing_campaign_dataset.csv"
+DEFAULT_CSV_NAME = "raw_marketing_dataset.csv"
 
 
 def download_kaggle_dataset(
@@ -52,3 +52,4 @@ def download_kaggle_dataset(
 if __name__ == "__main__":
     output_path = download_kaggle_dataset()
     print(f"Raw dataset saved to: {output_path}")
+

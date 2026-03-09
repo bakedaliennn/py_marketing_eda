@@ -18,13 +18,10 @@ The cleaned dataset includes 200,000 campaign records with fields such as:
 - `Customer_Segment`, `Location`, `Language`
 
 ## Repository Structure
-- `dataset/`: legacy notebook raw-data path.
-   - `marketing_campaign_dataset.csv`
 - `datasets/`: script-first data path (raw, cleaned, and realism variants).
-   - `marketing_campaign_dataset.csv`
-   - `marketing_campaign_dataset_cleaned.csv`
-   - `cleaned_marketing_campaign_dataset.csv`
-   - `realistic_campaign_dataset.csv`
+   - `raw_marketing_dataset.csv`
+   - `cleaned_marketing_dataset.csv`
+   - `realistic_marketing_dataset.csv`
 - `notebooks/`: full analytical pipeline notebooks.
    - `01_initial_exploration.ipynb`
    - `02_clean_and_validate.ipynb`
@@ -32,6 +29,7 @@ The cleaned dataset includes 200,000 campaign records with fields such as:
    - `04_multivariate_analysis.ipynb`
    - `05_actionable_recommendations.md`
    - `06_inject_realism.ipynb`
+   - `07_realism_exploration.ipynb`
 - `scripts/`: reusable automation modules.
    - `download_dataset.py`
    - `clean_dataset.py`
@@ -42,15 +40,18 @@ The cleaned dataset includes 200,000 campaign records with fields such as:
 - `results/`: exported charts and outputs.
    - `bivariate_analysis/`
       - `bivariate_final_summary.csv`
-      - `avg_conversion_by_audience_dark.png`
-      - `correlation_heatmap_dark.png`
-      - `roi_distribution_by_channel_dark.png`
+      - `avg_conversion_by_audience.png`
+      - `correlation_heatmap.png`
+      - `roi_distribution_by_channel.png`
    - `multivariate_analysis/`
       - `multivariate_final_summary.csv`
-      - `actual_vs_predicted_roi_dark.png`
-      - `kmeans_clusters_pca_space_dark.png`
-      - `pairplot_key_numeric_variables_dark.png`
-      - `silhouette_scores_by_k_dark.png`
+      - `actual_vs_predicted_roi.png`
+      - `kmeans_clusters_pca_space.png`
+      - `pairplot_key_numeric_variables.png`
+      - `silhouette_scores_by_k.png`
+   - `realism_exploration/`
+      - `realism_comparison_summary.csv`
+      - `final_summary.csv`
 
 ## Notebook Pipeline (Recommended for Learning and Review)
 Run notebooks in this order:
@@ -58,11 +59,11 @@ Run notebooks in this order:
 1. `notebooks/01_initial_exploration.ipynb`
 - Acquire raw dataset (reuse local file if already present).
 - Perform raw-data EDA and quality checks.
-- Saves/reuses `dataset/marketing_campaign_dataset.csv`.
+- Saves/reuses `datasets/raw_marketing_dataset.csv`.
 
 2. `notebooks/02_clean_and_validate.ipynb`
 - Apply full cleaning transformations directly in notebook cells.
-- Validate cleaned schema and save `datasets/cleaned_marketing_campaign_dataset.csv`.
+- Validate cleaned schema and save `datasets/cleaned_marketing_dataset.csv`.
 
 3. `notebooks/03_bivariate_analysis.ipynb`
 - Analyze pairwise relationships, channel and audience performance, correlations, and hypothesis testing.
@@ -77,7 +78,12 @@ Run notebooks in this order:
 
 6. `notebooks/06_inject_realism.ipynb`
 - Applies realism transformations (channel effects, seasonality, interaction effects, controlled artifacts).
-- Saves `datasets/realistic_campaign_dataset.csv`.
+- Saves `datasets/realistic_marketing_dataset.csv`.
+- Saves `results/realism_exploration/realism_comparison_summary.csv`.
+
+7. `notebooks/07_realism_exploration.ipynb`
+- Evaluates and summarizes realism-focused outputs.
+- Saves summary tables under `results/realism_exploration/`.
 
 ## Script Workflow (Recommended for Fast Reproducible Runs)
 Use scripts when you want faster execution outside notebooks.
@@ -94,23 +100,23 @@ python scripts/clean_and_validate.py
 
 3. Run initial exploration:
 ```bash
-python scripts/initial_exploration.py --dataset marketing_campaign_dataset.csv
+python scripts/initial_exploration.py --dataset raw_marketing_dataset.csv
 ```
 
 4. Run bivariate analysis:
 ```bash
-python scripts/bivariate_analysis.py --dataset marketing_campaign_dataset_cleaned.csv
+python scripts/bivariate_analysis.py --dataset cleaned_marketing_dataset.csv
 ```
 
 5. Run multivariate analysis:
 ```bash
-python scripts/multivariate_analysis.py --dataset marketing_campaign_dataset_cleaned.csv
+python scripts/multivariate_analysis.py --dataset cleaned_marketing_dataset.csv
 ```
 
 Note on cleaned file naming:
-- Notebook `02_clean_and_validate.ipynb` currently writes `datasets/cleaned_marketing_campaign_dataset.csv`.
-- Script workflow defaults to `datasets/marketing_campaign_dataset_cleaned.csv`.
-- If you run analyses from notebook-cleaned output, pass `--dataset cleaned_marketing_campaign_dataset.csv` to scripts 03/04.
+- Notebook `02_clean_and_validate.ipynb` currently writes `datasets/cleaned_marketing_dataset.csv`.
+- Script workflow defaults to `datasets/cleaned_marketing_dataset.csv`.
+- Use `--dataset cleaned_marketing_dataset.csv` for scripts 03/04.
 
 ## Setup
 1. Clone repository:
@@ -131,14 +137,16 @@ pip install pandas numpy matplotlib seaborn scikit-learn scipy kagglehub
 5. Run either the notebook pipeline or script workflow.
 
 ## Outputs
-- Cleaned dataset saved to one of:
-   - `datasets/marketing_campaign_dataset_cleaned.csv` (script default)
-   - `datasets/cleaned_marketing_campaign_dataset.csv` (notebook 02 output)
-- Realism-augmented dataset saved to `datasets/realistic_campaign_dataset.csv`
+- Cleaned dataset saved to `datasets/cleaned_marketing_dataset.csv`
+- Realism-augmented dataset saved to `datasets/realistic_marketing_dataset.csv`
+- Realism comparison summary saved to `results/realism_exploration/realism_comparison_summary.csv`
+- Realism exploration final summary saved to `results/realism_exploration/final_summary.csv`
 - Bivariate summary CSV saved to `results/bivariate_analysis/bivariate_final_summary.csv`
 - Multivariate summary CSV saved to `results/multivariate_analysis/multivariate_final_summary.csv`
-- Notebook-generated charts saved under `results/bivariate_analysis/` and `results/multivariate_analysis/`
+- Notebook-generated charts saved under `results/bivariate_analysis/`, `results/multivariate_analysis/`, and `results/realism_exploration/`
 - Script-generated summaries and charts saved under `results/initial_exploration/`, `results/clean_and_validate/`, `results/bivariate_analysis/`, and `results/multivariate_analysis/`
 
 ## License
 This project is licensed under the MIT License. See `LICENSE` for details.
+
+

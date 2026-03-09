@@ -12,7 +12,7 @@ import seaborn as sns
 from scipy import stats
 
 
-DEFAULT_INPUT = "marketing_campaign_dataset_cleaned.csv"
+DEFAULT_INPUT = "cleaned_marketing_dataset.csv"
 
 
 def resolve_input_path(repo_root: Path, input_path: str | None, dataset_name: str) -> Path:
@@ -36,6 +36,16 @@ def configure_plot_theme() -> None:
     plt.rcParams["ytick.color"] = "#E0E0E0"
     plt.rcParams["text.color"] = "#F5F5F5"
     plt.rcParams["grid.color"] = "#3A3A3A"
+
+
+def save_current_figure(output_path: Path) -> None:
+    plt.savefig(output_path, dpi=300, bbox_inches="tight")
+    plt.close()
+
+
+def print_saved_artifacts(artifacts: list[Path]) -> None:
+    for artifact in artifacts:
+        print(f"Saved: {artifact}")
 
 
 def run_bivariate_analysis(input_csv: Path, results_dir: Path, alpha: float) -> None:
@@ -68,9 +78,8 @@ def run_bivariate_analysis(input_csv: Path, results_dir: Path, alpha: float) -> 
     plt.ylabel("ROI")
     plt.xticks(rotation=30, ha="right")
     plt.tight_layout()
-    roi_plot_path = results_dir / "roi_distribution_by_channel_dark.png"
-    plt.savefig(roi_plot_path, dpi=300, bbox_inches="tight")
-    plt.close()
+    roi_plot_path = results_dir / "roi_distribution_by_channel.png"
+    save_current_figure(roi_plot_path)
 
     channel_roi_summary = (
         plot_df.groupby("Channel_Used")["ROI"]
@@ -97,9 +106,8 @@ def run_bivariate_analysis(input_csv: Path, results_dir: Path, alpha: float) -> 
     plt.ylabel("Average Conversion Rate")
     plt.xticks(rotation=25, ha="right")
     plt.tight_layout()
-    audience_plot_path = results_dir / "avg_conversion_by_audience_dark.png"
-    plt.savefig(audience_plot_path, dpi=300, bbox_inches="tight")
-    plt.close()
+    audience_plot_path = results_dir / "avg_conversion_by_audience.png"
+    save_current_figure(audience_plot_path)
 
     num_cols = [
         "Conversion_Rate",
@@ -122,9 +130,8 @@ def run_bivariate_analysis(input_csv: Path, results_dir: Path, alpha: float) -> 
     )
     plt.title("Correlation Heatmap: Marketing Performance Metrics")
     plt.tight_layout()
-    corr_plot_path = results_dir / "correlation_heatmap_dark.png"
-    plt.savefig(corr_plot_path, dpi=300, bbox_inches="tight")
-    plt.close()
+    corr_plot_path = results_dir / "correlation_heatmap.png"
+    save_current_figure(corr_plot_path)
 
     google_roi = df.loc[df["Channel_Used"] == "Google Ads", "ROI"].dropna()
     youtube_roi = df.loc[df["Channel_Used"] == "YouTube", "ROI"].dropna()
@@ -213,10 +220,7 @@ def run_bivariate_analysis(input_csv: Path, results_dir: Path, alpha: float) -> 
     final_summary.to_csv(summary_csv_path, index=False)
 
     print(f"Input file: {input_csv}")
-    print(f"Saved: {roi_plot_path}")
-    print(f"Saved: {audience_plot_path}")
-    print(f"Saved: {corr_plot_path}")
-    print(f"Saved summary CSV: {summary_csv_path}")
+    print_saved_artifacts([roi_plot_path, audience_plot_path, corr_plot_path, summary_csv_path])
 
 
 def main() -> None:
@@ -228,10 +232,11 @@ def main() -> None:
 
     repo_root = Path(__file__).resolve().parent.parent
     input_csv = resolve_input_path(repo_root, args.input_path, args.dataset)
-    results_dir = repo_root / "results" / "bivariate_analysis" / input_csv.stem
+    results_dir = repo_root / "results" / "bivariate_analysis"
 
     run_bivariate_analysis(input_csv=input_csv, results_dir=results_dir, alpha=args.alpha)
 
 
 if __name__ == "__main__":
     main()
+

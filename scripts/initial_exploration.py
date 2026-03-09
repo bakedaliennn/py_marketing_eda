@@ -11,7 +11,7 @@ import pandas as pd
 from download_dataset import download_kaggle_dataset
 
 
-DEFAULT_DATASET = "marketing_campaign_dataset.csv"
+DEFAULT_DATASET = "raw_marketing_dataset.csv"
 
 
 def resolve_input_path(repo_root: Path, dataset: str, input_path: str | None) -> Path:
@@ -19,6 +19,11 @@ def resolve_input_path(repo_root: Path, dataset: str, input_path: str | None) ->
         path = Path(input_path)
         return path if path.is_absolute() else (repo_root / path).resolve()
     return (repo_root / "datasets" / dataset).resolve()
+
+
+def print_saved_artifacts(artifacts: list[Path]) -> None:
+    for artifact in artifacts:
+        print(f"Saved: {artifact}")
 
 
 def run_initial_exploration(
@@ -68,12 +73,16 @@ def run_initial_exploration(
         }
     ) if cat_cols else pd.DataFrame()
 
-    missing_summary.to_csv(results_dir / "missing_summary.csv")
-    numeric_profile.to_csv(results_dir / "numeric_profile.csv")
-    categorical_profile.to_csv(results_dir / "categorical_profile.csv")
+    missing_summary_path = results_dir / "missing_summary.csv"
+    numeric_profile_path = results_dir / "numeric_profile.csv"
+    categorical_profile_path = results_dir / "categorical_profile.csv"
+
+    missing_summary.to_csv(missing_summary_path)
+    numeric_profile.to_csv(numeric_profile_path)
+    categorical_profile.to_csv(categorical_profile_path)
 
     print(f"Raw dataframe shape: {df_raw.shape}")
-    print(f"Results saved in: {results_dir}")
+    print_saved_artifacts([missing_summary_path, numeric_profile_path, categorical_profile_path])
 
 
 def main() -> None:
@@ -87,10 +96,11 @@ def main() -> None:
 
     repo_root = Path(__file__).resolve().parent.parent
     input_csv = resolve_input_path(repo_root, args.dataset, args.input_path)
-    results_dir = repo_root / "results" / "initial_exploration" / input_csv.stem
+    results_dir = repo_root / "results" / "initial_exploration"
 
     run_initial_exploration(input_csv, results_dir, args.download_if_missing, args.force_download, args.dataset_ref)
 
 
 if __name__ == "__main__":
     main()
+

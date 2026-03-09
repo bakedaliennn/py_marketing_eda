@@ -1,4 +1,4 @@
-# 05 Actionable Recommendations
+﻿# 05 Actionable Recommendations
 
 ## Why this file exists
 The executive summaries in `03_bivariate_analysis.ipynb` and `04_multivariate_analysis.ipynb` point to the same issue: the cleaned dataset behaves too uniformly and does not express realistic marketing dynamics. ROI, conversion rates, and pairwise relationships are nearly flat, linear models explain little, and clusters are weakly separated.
@@ -180,7 +180,7 @@ Suggested acceptance examples (tune to your domain):
 - Silhouette score better than current baseline and stable across reruns.
 
 ## Practical execution plan
-1. Create a transformation script (for example `scripts/inject_realism.py`) that reads `marketing_campaign_dataset_cleaned.csv` and writes `marketing_campaign_dataset_realistic.csv`.
+1. Create a transformation script (for example `scripts/inject_realism.py`) that reads `cleaned_marketing_dataset.csv` and writes `realistic_campaign_dataset.csv`.
 2. Implement transformations in staged functions matching sections 1-9 above.
 3. Seed randomness for reproducibility.
 4. Run notebook 3 and notebook 4 on the realistic dataset.
@@ -200,3 +200,4 @@ Suggested acceptance examples (tune to your domain):
 
 ## Final note
 Treat this as calibration, not random distortion. The objective is to generate data that behaves like a plausible marketing system: heterogeneous, partially predictable, temporally dynamic, and noisy enough to challenge both bivariate and multivariate analysis in a realistic way.
+

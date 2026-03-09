@@ -11,8 +11,8 @@ import pandas as pd
 from clean_dataset import REQUIRED_COLUMNS, clean_dataset
 
 
-DEFAULT_INPUT = "marketing_campaign_dataset.csv"
-DEFAULT_OUTPUT = "marketing_campaign_dataset_cleaned.csv"
+DEFAULT_INPUT = "raw_marketing_dataset.csv"
+DEFAULT_OUTPUT = "cleaned_marketing_dataset.csv"
 
 
 def resolve_path(repo_root: Path, explicit_path: str | None, default_subpath: Path) -> Path:
@@ -20,6 +20,11 @@ def resolve_path(repo_root: Path, explicit_path: str | None, default_subpath: Pa
         path = Path(explicit_path)
         return path if path.is_absolute() else (repo_root / path).resolve()
     return (repo_root / default_subpath).resolve()
+
+
+def print_saved_artifacts(artifacts: list[Path]) -> None:
+    for artifact in artifacts:
+        print(f"Saved: {artifact}")
 
 
 def run_clean_and_validate(input_csv: Path, output_csv: Path, results_dir: Path) -> None:
@@ -46,8 +51,10 @@ def run_clean_and_validate(input_csv: Path, output_csv: Path, results_dir: Path)
     )
     numeric_profile = cleaned_df.describe(include=[np.number]).T.sort_values("std", ascending=False)
 
-    missing_summary.to_csv(results_dir / "missing_summary.csv")
-    numeric_profile.to_csv(results_dir / "numeric_profile.csv")
+    missing_summary_path = results_dir / "missing_summary.csv"
+    numeric_profile_path = results_dir / "numeric_profile.csv"
+    missing_summary.to_csv(missing_summary_path)
+    numeric_profile.to_csv(numeric_profile_path)
 
     validation_summary = pd.DataFrame(
         [
@@ -58,12 +65,14 @@ def run_clean_and_validate(input_csv: Path, output_csv: Path, results_dir: Path)
             {"metric": "missing_required_columns", "value": len(missing_columns)},
         ]
     )
-    validation_summary.to_csv(results_dir / "validation_summary.csv", index=False)
+    validation_summary_path = results_dir / "validation_summary.csv"
+    validation_summary.to_csv(validation_summary_path, index=False)
 
     print(f"Input file: {input_csv}")
     print(f"Cleaned file: {output_csv}")
     print(f"Rows before: {rows_before}")
     print(f"Rows after: {rows_after}")
+    print_saved_artifacts([missing_summary_path, numeric_profile_path, validation_summary_path])
 
 
 def main() -> None:
@@ -77,10 +86,11 @@ def main() -> None:
     repo_root = Path(__file__).resolve().parent.parent
     input_csv = resolve_path(repo_root, args.input_path, Path("datasets") / args.dataset)
     output_csv = resolve_path(repo_root, args.output_path, Path("datasets") / args.output)
-    results_dir = repo_root / "results" / "clean_and_validate" / input_csv.stem
+    results_dir = repo_root / "results" / "clean_and_validate"
 
     run_clean_and_validate(input_csv, output_csv, results_dir)
 
 
 if __name__ == "__main__":
     main()
+

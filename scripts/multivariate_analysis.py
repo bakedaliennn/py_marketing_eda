@@ -17,7 +17,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 
 
-DEFAULT_INPUT = "marketing_campaign_dataset_cleaned.csv"
+DEFAULT_INPUT = "cleaned_marketing_dataset.csv"
 
 
 def resolve_input_path(repo_root: Path, input_path: str | None, dataset_name: str) -> Path:
@@ -41,6 +41,16 @@ def configure_plot_theme() -> None:
     plt.rcParams["ytick.color"] = "#E0E0E0"
     plt.rcParams["text.color"] = "#F5F5F5"
     plt.rcParams["grid.color"] = "#3A3A3A"
+
+
+def save_current_figure(output_path: Path) -> None:
+    plt.savefig(output_path, dpi=300, bbox_inches="tight")
+    plt.close()
+
+
+def print_saved_artifacts(artifacts: list[Path]) -> None:
+    for artifact in artifacts:
+        print(f"Saved: {artifact}")
 
 
 def run_multivariate_analysis(input_csv: Path, results_dir: Path) -> None:
@@ -81,7 +91,7 @@ def run_multivariate_analysis(input_csv: Path, results_dir: Path) -> None:
     pair_grid = sns.pairplot(pair_df, corner=True, diag_kind="hist", plot_kws={"alpha": 0.3, "s": 12})
     pair_grid.fig.suptitle("Pairplot of Key Numeric Variables (Sample)", y=1.02)
     pair_grid.fig.tight_layout()
-    pairplot_path = results_dir / "pairplot_key_numeric_variables_dark.png"
+    pairplot_path = results_dir / "pairplot_key_numeric_variables.png"
     pair_grid.fig.savefig(pairplot_path, dpi=300, bbox_inches="tight")
     plt.close(pair_grid.fig)
 
@@ -107,9 +117,8 @@ def run_multivariate_analysis(input_csv: Path, results_dir: Path) -> None:
     plt.xlabel("Actual ROI")
     plt.ylabel("Predicted ROI")
     plt.tight_layout()
-    actual_vs_pred_path = results_dir / "actual_vs_predicted_roi_dark.png"
-    plt.savefig(actual_vs_pred_path, dpi=300, bbox_inches="tight")
-    plt.close()
+    actual_vs_pred_path = results_dir / "actual_vs_predicted_roi.png"
+    save_current_figure(actual_vs_pred_path)
 
     cluster_features = ["Conversion_Rate", "Acquisition_Cost", "ROI", "Clicks", "Impressions", "Engagement_Score"]
     cluster_df = model_df[cluster_features].dropna().copy()
@@ -146,9 +155,8 @@ def run_multivariate_analysis(input_csv: Path, results_dir: Path) -> None:
     plt.xlabel("Number of Clusters (K)")
     plt.ylabel("Silhouette Score")
     plt.tight_layout()
-    silhouette_plot_path = results_dir / "silhouette_scores_by_k_dark.png"
-    plt.savefig(silhouette_plot_path, dpi=300, bbox_inches="tight")
-    plt.close()
+    silhouette_plot_path = results_dir / "silhouette_scores_by_k.png"
+    save_current_figure(silhouette_plot_path)
 
     kmeans = KMeans(n_clusters=best_k, n_init=20, random_state=42)
     cluster_df["cluster"] = kmeans.fit_predict(X_cluster_scaled)
@@ -167,9 +175,8 @@ def run_multivariate_analysis(input_csv: Path, results_dir: Path) -> None:
     sns.scatterplot(data=pca_plot_df, x="PC1", y="PC2", hue="cluster", palette="tab10", alpha=0.65)
     plt.title("K-Means Clusters Projected onto 2D PCA Space")
     plt.tight_layout()
-    pca_clusters_path = results_dir / "kmeans_clusters_pca_space_dark.png"
-    plt.savefig(pca_clusters_path, dpi=300, bbox_inches="tight")
-    plt.close()
+    pca_clusters_path = results_dir / "kmeans_clusters_pca_space.png"
+    save_current_figure(pca_clusters_path)
 
     explained = pca.explained_variance_ratio_
     cluster_counts = cluster_df["cluster"].value_counts().sort_index()
@@ -265,11 +272,9 @@ def run_multivariate_analysis(input_csv: Path, results_dir: Path) -> None:
     print(f"Input file: {input_csv}")
     print(f"Rows used for modeling: {len(model_df)}")
     print(f"R^2: {r2:.4f}, MAE: {mae:.4f}, RMSE: {rmse:.4f}")
-    print(f"Saved: {pairplot_path}")
-    print(f"Saved: {actual_vs_pred_path}")
-    print(f"Saved: {silhouette_plot_path}")
-    print(f"Saved: {pca_clusters_path}")
-    print(f"Saved summary CSV: {multivariate_summary_csv_path}")
+    print_saved_artifacts(
+        [pairplot_path, actual_vs_pred_path, silhouette_plot_path, pca_clusters_path, multivariate_summary_csv_path]
+    )
 
 
 def main() -> None:
@@ -280,10 +285,11 @@ def main() -> None:
 
     repo_root = Path(__file__).resolve().parent.parent
     input_csv = resolve_input_path(repo_root, args.input_path, args.dataset)
-    results_dir = repo_root / "results" / "multivariate_analysis" / input_csv.stem
+    results_dir = repo_root / "results" / "multivariate_analysis"
 
     run_multivariate_analysis(input_csv=input_csv, results_dir=results_dir)
 
 
 if __name__ == "__main__":
     main()
+

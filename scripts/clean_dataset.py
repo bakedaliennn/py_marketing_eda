@@ -8,8 +8,8 @@ import numpy as np
 import pandas as pd
 
 
-RAW_CSV_FILENAME = "marketing_campaign_dataset.csv"
-OUTPUT_CSV_FILENAME = "marketing_campaign_dataset_cleaned.csv"
+RAW_CSV_FILENAME = "raw_marketing_dataset.csv"
+OUTPUT_CSV_FILENAME = "cleaned_marketing_dataset.csv"
 
 
 REQUIRED_COLUMNS: list[str] = [
@@ -79,4 +79,5 @@ def clean_dataset(
 if __name__ == "__main__":
     cleaned_df = clean_dataset()
     print(f"Cleaned dataset shape: {cleaned_df.shape}")
-    print("Saved cleaned file to: datasets/marketing_campaign_dataset_cleaned.csv")
+    print("Saved cleaned file to: datasets/cleaned_marketing_dataset.csv")
+
