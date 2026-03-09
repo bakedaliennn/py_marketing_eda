@@ -1,0 +1,8 @@
+column,num_levels,js_divergence,chi2_stat,chi2_pvalue
+Company,5,0.0,0.0,1.0
+Campaign_Type,5,0.0,0.0,1.0
+Target_Audience,5,0.0,0.0,1.0
+Channel_Used,6,0.0,0.0,1.0
+Location,5,0.0,0.0,1.0
+Language,5,0.0,0.0,1.0
+Customer_Segment,5,0.0,0.0,1.0

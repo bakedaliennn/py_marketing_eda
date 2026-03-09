@@ -1,0 +1,9 @@
+dataset,rule,violation_count,violation_rate_pct
+cleaned,conversion_rate_between_0_and_1,0,0.0
+cleaned,engagement_score_between_0_and_10,0,0.0
+cleaned,clicks_not_exceed_impressions,0,0.0
+cleaned,non_negative_duration,0,0.0
+realistic,conversion_rate_between_0_and_1,0,0.0
+realistic,engagement_score_between_0_and_10,0,0.0
+realistic,clicks_not_exceed_impressions,0,0.0
+realistic,non_negative_duration,0,0.0

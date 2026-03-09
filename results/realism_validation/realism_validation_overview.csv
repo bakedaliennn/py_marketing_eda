@@ -1,0 +1,10 @@
+metric,value
+numeric_avg_ks_stat,0.10705249999999997
+numeric_avg_wasserstein,196.13712502987505
+categorical_avg_js_divergence,0.0
+avg_abs_correlation_delta,0.06056039024327824
+rule_gap_pct__clicks_not_exceed_impressions,0.0
+rule_gap_pct__conversion_rate_between_0_and_1,0.0
+rule_gap_pct__engagement_score_between_0_and_10,0.0
+rule_gap_pct__non_negative_duration,0.0
+detectability_auc,0.7379536132

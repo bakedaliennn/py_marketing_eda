@@ -1,0 +1,4 @@
+metric,value
+auc,0.7379536132
+train_rows,300000.0
+test_rows,100000.0
