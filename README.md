@@ -18,7 +18,7 @@ The cleaned dataset includes 200,000 campaign records with fields such as:
 - `Customer_Segment`, `Location`, `Language`
 
 ## Repository Structure
-- `dataset/`: raw and cleaned CSV files.
+- `datasets/`: raw and cleaned CSV files.
    - `marketing_campaign_dataset.csv`
    - `marketing_campaign_dataset_cleaned.csv`
 - `notebooks/`: full analytical pipeline notebooks.
@@ -27,9 +27,12 @@ The cleaned dataset includes 200,000 campaign records with fields such as:
    - `03_bivariate_analysis.ipynb`
    - `04_multivariate_analysis.ipynb`
 - `scripts/`: reusable automation modules.
-   - `kaggle_import.py`
-   - `data_cleaner.py`
-   - `visualize.py`
+   - `download_dataset.py`
+   - `clean_dataset.py`
+   - `initial_exploration.py`
+   - `clean_and_validate.py`
+   - `bivariate_analysis.py`
+   - `multivariate_analysis.py`
 - `results/`: exported charts and outputs.
    - `bivariate_analysis/`
       - `bivariate_final_summary.csv`
@@ -52,7 +55,7 @@ Run notebooks in this order:
 
 2. `notebooks/02_clean_and_validate.ipynb`
 - Apply full cleaning transformations directly in notebook cells.
-- Validate cleaned schema and save `dataset/marketing_campaign_dataset_cleaned.csv`.
+- Validate cleaned schema and save `datasets/marketing_campaign_dataset_cleaned.csv`.
 
 3. `notebooks/03_bivariate_analysis.ipynb`
 - Analyze pairwise relationships, channel and audience performance, correlations, and hypothesis testing.
@@ -67,15 +70,28 @@ Use scripts when you want faster execution outside notebooks.
 
 1. Download raw data:
 ```bash
-python scripts/kaggle_import.py
+python scripts/download_dataset.py
 ```
 
 2. Clean dataset:
 ```bash
-python scripts/data_cleaner.py
+python scripts/clean_and_validate.py
 ```
 
-3. Use plotting helpers from `scripts/visualize.py` in your own driver script or notebook.
+3. Run initial exploration:
+```bash
+python scripts/initial_exploration.py --dataset marketing_campaign_dataset.csv
+```
+
+4. Run bivariate analysis:
+```bash
+python scripts/bivariate_analysis.py --dataset marketing_campaign_dataset_cleaned.csv
+```
+
+5. Run multivariate analysis:
+```bash
+python scripts/multivariate_analysis.py --dataset marketing_campaign_dataset_cleaned.csv
+```
 
 ## Setup
 1. Clone repository:
@@ -96,11 +112,11 @@ pip install pandas numpy matplotlib seaborn scikit-learn scipy kagglehub
 5. Run either the notebook pipeline or script workflow.
 
 ## Outputs
-- Cleaned dataset saved to `dataset/marketing_campaign_dataset_cleaned.csv`
+- Cleaned dataset saved to `datasets/marketing_campaign_dataset_cleaned.csv`
 - Bivariate summary CSV saved to `results/bivariate_analysis/bivariate_final_summary.csv`
 - Multivariate summary CSV saved to `results/multivariate_analysis/multivariate_final_summary.csv`
 - Notebook-generated charts saved under `results/bivariate_analysis/` and `results/multivariate_analysis/`
-- Script helper charts (from `scripts/visualize.py`) saved to `results/`
+- Script-generated summaries and charts saved under `results/initial_exploration/`, `results/clean_and_validate/`, `results/bivariate_analysis/`, and `results/multivariate_analysis/`
 
 ## License
 This project is licensed under the MIT License. See `LICENSE` for details.
