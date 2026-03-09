@@ -18,14 +18,20 @@ The cleaned dataset includes 200,000 campaign records with fields such as:
 - `Customer_Segment`, `Location`, `Language`
 
 ## Repository Structure
-- `datasets/`: raw and cleaned CSV files.
+- `dataset/`: legacy notebook raw-data path.
+   - `marketing_campaign_dataset.csv`
+- `datasets/`: script-first data path (raw, cleaned, and realism variants).
    - `marketing_campaign_dataset.csv`
    - `marketing_campaign_dataset_cleaned.csv`
+   - `cleaned_marketing_campaign_dataset.csv`
+   - `realistic_campaign_dataset.csv`
 - `notebooks/`: full analytical pipeline notebooks.
    - `01_initial_exploration.ipynb`
    - `02_clean_and_validate.ipynb`
    - `03_bivariate_analysis.ipynb`
    - `04_multivariate_analysis.ipynb`
+   - `05_actionable_recommendations.md`
+   - `06_inject_realism.ipynb`
 - `scripts/`: reusable automation modules.
    - `download_dataset.py`
    - `clean_dataset.py`
@@ -52,10 +58,11 @@ Run notebooks in this order:
 1. `notebooks/01_initial_exploration.ipynb`
 - Acquire raw dataset (reuse local file if already present).
 - Perform raw-data EDA and quality checks.
+- Saves/reuses `dataset/marketing_campaign_dataset.csv`.
 
 2. `notebooks/02_clean_and_validate.ipynb`
 - Apply full cleaning transformations directly in notebook cells.
-- Validate cleaned schema and save `datasets/marketing_campaign_dataset_cleaned.csv`.
+- Validate cleaned schema and save `datasets/cleaned_marketing_campaign_dataset.csv`.
 
 3. `notebooks/03_bivariate_analysis.ipynb`
 - Analyze pairwise relationships, channel and audience performance, correlations, and hypothesis testing.
@@ -64,6 +71,13 @@ Run notebooks in this order:
 4. `notebooks/04_multivariate_analysis.ipynb`
 - Perform multivariate modeling and segmentation (regression, clustering, PCA).
 - Export final summary and charts to `results/multivariate_analysis/`.
+
+5. `notebooks/05_actionable_recommendations.md`
+- Summarizes insights and recommendations derived from the analysis outputs.
+
+6. `notebooks/06_inject_realism.ipynb`
+- Applies realism transformations (channel effects, seasonality, interaction effects, controlled artifacts).
+- Saves `datasets/realistic_campaign_dataset.csv`.
 
 ## Script Workflow (Recommended for Fast Reproducible Runs)
 Use scripts when you want faster execution outside notebooks.
@@ -93,6 +107,11 @@ python scripts/bivariate_analysis.py --dataset marketing_campaign_dataset_cleane
 python scripts/multivariate_analysis.py --dataset marketing_campaign_dataset_cleaned.csv
 ```
 
+Note on cleaned file naming:
+- Notebook `02_clean_and_validate.ipynb` currently writes `datasets/cleaned_marketing_campaign_dataset.csv`.
+- Script workflow defaults to `datasets/marketing_campaign_dataset_cleaned.csv`.
+- If you run analyses from notebook-cleaned output, pass `--dataset cleaned_marketing_campaign_dataset.csv` to scripts 03/04.
+
 ## Setup
 1. Clone repository:
 ```bash
@@ -112,7 +131,10 @@ pip install pandas numpy matplotlib seaborn scikit-learn scipy kagglehub
 5. Run either the notebook pipeline or script workflow.
 
 ## Outputs
-- Cleaned dataset saved to `datasets/marketing_campaign_dataset_cleaned.csv`
+- Cleaned dataset saved to one of:
+   - `datasets/marketing_campaign_dataset_cleaned.csv` (script default)
+   - `datasets/cleaned_marketing_campaign_dataset.csv` (notebook 02 output)
+- Realism-augmented dataset saved to `datasets/realistic_campaign_dataset.csv`
 - Bivariate summary CSV saved to `results/bivariate_analysis/bivariate_final_summary.csv`
 - Multivariate summary CSV saved to `results/multivariate_analysis/multivariate_final_summary.csv`
 - Notebook-generated charts saved under `results/bivariate_analysis/` and `results/multivariate_analysis/`
