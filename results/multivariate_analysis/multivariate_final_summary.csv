@@ -1,0 +1,71 @@
+section,group,metric,value
+regression_metrics,linear_regression,r2,-0.00019417368265295387
+regression_metrics,linear_regression,mae,1.5044200408628519
+regression_metrics,linear_regression,rmse,1.736742344953176
+regression_metrics,linear_regression,train_rows,150000.0
+regression_metrics,linear_regression,test_rows,50000.0
+top_coefficients,Conversion_Rate,coefficient,-0.055820358199902255
+top_coefficients,Channel_Used_Facebook,coefficient,0.027552950979234003
+top_coefficients,Target_Audience_Men 18-24,coefficient,-0.022680363965644487
+top_coefficients,Target_Audience_Men 25-34,coefficient,0.019299465909444785
+top_coefficients,Campaign_Type_Social Media,coefficient,-0.017666963127364526
+top_coefficients,Channel_Used_Website,coefficient,0.013655270445421228
+top_coefficients,Channel_Used_YouTube,coefficient,-0.012884629649339101
+top_coefficients,Campaign_Type_Influencer,coefficient,0.012067873522268227
+top_coefficients,Campaign_Type_Search,coefficient,0.009157536405949518
+top_coefficients,Campaign_Type_Email,coefficient,-0.008975900921602876
+top_coefficients,Customer_Segment_Tech Enthusiasts,coefficient,0.008660244957172554
+top_coefficients,Customer_Segment_Health & Wellness,coefficient,0.008458362152745338
+top_coefficients,Customer_Segment_Outdoor Adventurers,coefficient,0.006996842051518689
+top_coefficients,Channel_Used_Instagram,coefficient,-0.006120299896148573
+top_coefficients,Target_Audience_Women 35-44,coefficient,0.006016695217333312
+silhouette_scores,k_3,silhouette_score,0.11061762655634393
+silhouette_scores,k_4,silhouette_score,0.11412234793053713
+silhouette_scores,k_5,silhouette_score,0.11744769311981193
+silhouette_scores,k_6,silhouette_score,0.11828618344214817
+silhouette_scores,model_selection,best_k,6.0
+cluster_sizes,cluster_0,count,33559.0
+cluster_sizes,cluster_1,count,33275.0
+cluster_sizes,cluster_2,count,33112.0
+cluster_sizes,cluster_3,count,33643.0
+cluster_sizes,cluster_4,count,33424.0
+cluster_sizes,cluster_5,count,32987.0
+cluster_feature_means,cluster_0,Conversion_Rate,0.08036175094609493
+cluster_feature_means,cluster_0,Acquisition_Cost,10009.59155517149
+cluster_feature_means,cluster_0,ROI,3.5046294585655113
+cluster_feature_means,cluster_0,Clicks,513.1591227390566
+cluster_feature_means,cluster_0,Impressions,6774.062248577133
+cluster_feature_means,cluster_0,Engagement_Score,3.035698322357639
+cluster_feature_means,cluster_1,Conversion_Rate,0.07850277986476333
+cluster_feature_means,cluster_1,Acquisition_Cost,15976.416649135988
+cluster_feature_means,cluster_1,ROI,6.247982569496619
+cluster_feature_means,cluster_1,Clicks,354.74752817430505
+cluster_feature_means,cluster_1,Impressions,6694.649947407964
+cluster_feature_means,cluster_1,Engagement_Score,4.344613072877536
+cluster_feature_means,cluster_2,Conversion_Rate,0.08151787871466538
+cluster_feature_means,cluster_2,Acquisition_Cost,10809.805901183861
+cluster_feature_means,cluster_2,ROI,6.356150942256583
+cluster_feature_means,cluster_2,Clicks,754.827132157526
+cluster_feature_means,cluster_2,Impressions,3876.4823024885236
+cluster_feature_means,cluster_2,Engagement_Score,3.8924257066924377
+cluster_feature_means,cluster_3,Conversion_Rate,0.08011146449484291
+cluster_feature_means,cluster_3,Acquisition_Cost,16084.531878845524
+cluster_feature_means,cluster_3,ROI,3.6766524982908777
+cluster_feature_means,cluster_3,Clicks,573.9216181672265
+cluster_feature_means,cluster_3,Impressions,3267.2993787712153
+cluster_feature_means,cluster_3,Engagement_Score,6.078441280504117
+cluster_feature_means,cluster_4,Conversion_Rate,0.08102261847774055
+cluster_feature_means,cluster_4,Acquisition_Cost,13090.851214696027
+cluster_feature_means,cluster_4,ROI,4.953795775490666
+cluster_feature_means,cluster_4,Clicks,760.4660124461465
+cluster_feature_means,cluster_4,Impressions,7754.303045715654
+cluster_feature_means,cluster_4,Engagement_Score,7.825933460986118
+cluster_feature_means,cluster_5,Conversion_Rate,0.07889107830357414
+cluster_feature_means,cluster_5,Acquisition_Cost,8995.563434080092
+cluster_feature_means,cluster_5,ROI,5.312393670233728
+cluster_feature_means,cluster_5,Clicks,339.7998605511262
+cluster_feature_means,cluster_5,Impressions,4665.6383423773
+cluster_feature_means,cluster_5,Engagement_Score,7.807408979294873
+pca,variance,pc1_explained_ratio,0.16770133016615862
+pca,variance,pc2_explained_ratio,0.16754042241304135
+pca,variance,pc1_pc2_total_ratio,0.33524175257919997

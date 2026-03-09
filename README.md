@@ -1,7 +1,7 @@
 # Marketing EDA with Python
 
 ## Project Overview
-This project analyzes marketing campaign performance data end-to-end using a notebook-first workflow and script-based automation.
+This project analyzes marketing campaign performance data end-to-end with a notebook-first workflow and script-based automation.
 
 Two development goals are reflected in the repository:
 1. Notebook-first analysis: each stage of the pipeline is fully implemented and explained in notebooks.
@@ -31,6 +31,17 @@ The cleaned dataset includes 200,000 campaign records with fields such as:
    - `data_cleaner.py`
    - `visualize.py`
 - `results/`: exported charts and outputs.
+   - `bivariate_analysis/`
+      - `bivariate_final_summary.csv`
+      - `avg_conversion_by_audience_dark.png`
+      - `correlation_heatmap_dark.png`
+      - `roi_distribution_by_channel_dark.png`
+   - `multivariate_analysis/`
+      - `multivariate_final_summary.csv`
+      - `actual_vs_predicted_roi_dark.png`
+      - `kmeans_clusters_pca_space_dark.png`
+      - `pairplot_key_numeric_variables_dark.png`
+      - `silhouette_scores_by_k_dark.png`
 
 ## Notebook Pipeline (Recommended for Learning and Review)
 Run notebooks in this order:
@@ -45,9 +56,11 @@ Run notebooks in this order:
 
 3. `notebooks/03_bivariate_analysis.ipynb`
 - Analyze pairwise relationships, channel and audience performance, correlations, and hypothesis testing.
+- Export final summary and charts to `results/bivariate_analysis/`.
 
 4. `notebooks/04_multivariate_analysis.ipynb`
 - Perform multivariate modeling and segmentation (regression, clustering, PCA).
+- Export final summary and charts to `results/multivariate_analysis/`.
 
 ## Script Workflow (Recommended for Fast Reproducible Runs)
 Use scripts when you want faster execution outside notebooks.
@@ -73,16 +86,21 @@ cd py_marketing_eda
 
 2. Create and activate a Python environment.
 
-3. Install dependencies (minimum):
+3. If you plan to run Kaggle import, configure your Kaggle credentials first (for example `kaggle.json` in the standard Kaggle config location).
+
+4. Install dependencies (minimum):
 ```bash
 pip install pandas numpy matplotlib seaborn scikit-learn scipy kagglehub
 ```
 
-4. Run either the notebook pipeline or script workflow.
+5. Run either the notebook pipeline or script workflow.
 
 ## Outputs
 - Cleaned dataset saved to `dataset/marketing_campaign_dataset_cleaned.csv`
-- Optional figures saved to `results/` (when using visualization helpers/export steps)
+- Bivariate summary CSV saved to `results/bivariate_analysis/bivariate_final_summary.csv`
+- Multivariate summary CSV saved to `results/multivariate_analysis/multivariate_final_summary.csv`
+- Notebook-generated charts saved under `results/bivariate_analysis/` and `results/multivariate_analysis/`
+- Script helper charts (from `scripts/visualize.py`) saved to `results/`
 
 ## License
 This project is licensed under the MIT License. See `LICENSE` for details.

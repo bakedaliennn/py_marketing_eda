@@ -1,0 +1,50 @@
+section,group,metric,value
+channel_roi,Facebook,count,32819.0
+channel_roi,Facebook,mean,5.018698619702002
+channel_roi,Facebook,median,5.04
+channel_roi,Facebook,std,1.738050084815184
+channel_roi,Website,count,33360.0
+channel_roi,Website,mean,5.014166666666667
+channel_roi,Website,median,5.03
+channel_roi,Website,std,1.725128835619358
+channel_roi,Google Ads,count,33438.0
+channel_roi,Google Ads,mean,5.003141336204319
+channel_roi,Google Ads,median,5.01
+channel_roi,Google Ads,std,1.73362865877496
+channel_roi,Email,count,33599.0
+channel_roi,Email,mean,4.996486502574482
+channel_roi,Email,median,5.0
+channel_roi,Email,std,1.7383486968344672
+channel_roi,Instagram,count,33392.0
+channel_roi,Instagram,mean,4.988705977479635
+channel_roi,Instagram,median,4.985
+channel_roi,Instagram,std,1.7394125151485307
+channel_roi,YouTube,count,33392.0
+channel_roi,YouTube,mean,4.993754192620987
+channel_roi,YouTube,median,4.97
+channel_roi,YouTube,std,1.7322777298175747
+audience_conversion,Men 18-24,count,40258.0
+audience_conversion,Men 18-24,mean,0.08023995230761588
+audience_conversion,Men 18-24,std,0.04041734057800044
+audience_conversion,Men 25-34,count,40023.0
+audience_conversion,Men 25-34,mean,0.08013167428728482
+audience_conversion,Men 25-34,std,0.040578929195958006
+audience_conversion,Women 35-44,count,39687.0
+audience_conversion,Women 35-44,mean,0.08010204852974526
+audience_conversion,Women 35-44,std,0.040686756481529605
+audience_conversion,All Ages,count,40019.0
+audience_conversion,All Ages,mean,0.07997476198805568
+audience_conversion,All Ages,std,0.040563301654225975
+audience_conversion,Women 25-34,count,40013.0
+audience_conversion,Women 25-34,mean,0.07989903281433534
+audience_conversion,Women 25-34,std,0.04076403182251645
+top_abs_correlation,ROI__Acquisition_Cost,abs_corr,0.004584823490700722
+top_abs_correlation,Acquisition_Cost__ROI,abs_corr,0.004584823490700722
+top_abs_correlation,Acquisition_Cost__Engagement_Score,abs_corr,0.003217615990304778
+top_abs_correlation,Engagement_Score__Acquisition_Cost,abs_corr,0.003217615990304778
+top_abs_correlation,Impressions__Engagement_Score,abs_corr,0.0030297138811754562
+top_abs_correlation,Engagement_Score__Impressions,abs_corr,0.0030297138811754562
+ttest_google_vs_youtube,google_vs_youtube,google_n,33438.0
+ttest_google_vs_youtube,google_vs_youtube,youtube_n,33392.0
+ttest_google_vs_youtube,google_vs_youtube,t_stat,0.7001681373818355
+ttest_google_vs_youtube,google_vs_youtube,p_value,0.48382474489495286
