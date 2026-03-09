@@ -1,11 +1,13 @@
-# Marketing EDA with Python
+# Marketing Insight Lab
 
 ## Project Overview
-This project analyzes marketing campaign performance data end-to-end with a notebook-first workflow and script-based automation.
+Marketing Insight Lab analyzes marketing campaign performance end-to-end with a notebook-first workflow and script-based automation.
 
-Two development goals are reflected in the repository:
-1. Notebook-first analysis: each stage of the pipeline is fully implemented and explained in notebooks.
-2. Script automation: the same core tasks are also available through reusable Python scripts for quick execution.
+Two core goals drive this repository:
+1. Educational realism branch: fine-tune synthetic realism so the dataset can be reused for learning and portfolio projects.
+2. Storytelling branch: prepare dashboard-ready outputs for BI tools such as Power BI and Tableau.
+
+Each stage is implemented in notebooks for transparency and reproducibility, with matching Python scripts for faster reruns.
 
 ## Dataset
 Source: [Marketing Campaign Performance Dataset (Kaggle)](https://www.kaggle.com/datasets/manishabhatt22/marketing-campaign-performance-dataset)
@@ -29,7 +31,8 @@ The cleaned dataset includes 200,000 campaign records with fields such as:
    - `04_multivariate_analysis.ipynb`
    - `05_actionable_recommendations.md`
    - `06_inject_realism.ipynb`
-   - `07_realism_exploration.ipynb`
+   - `07_realism_validation.ipynb`
+   - `08_realism_analyses.ipynb`
 - `scripts/`: reusable automation modules.
    - `download_dataset.py`
    - `clean_dataset.py`
@@ -52,6 +55,14 @@ The cleaned dataset includes 200,000 campaign records with fields such as:
    - `realism_exploration/`
       - `realism_comparison_summary.csv`
       - `final_summary.csv`
+   - `realism_validation/`
+      - `realism_validation_overview.csv`
+      - `synthetic_detectability.csv`
+      - `numeric_fidelity_summary.csv`
+      - `categorical_fidelity_summary.csv`
+   - `realism_analyses/`
+      - `bivariate_analysis/bivariate_final_summary.csv`
+      - `multivariate_analysis/multivariate_final_summary.csv`
 
 ## Notebook Pipeline (Recommended for Learning and Review)
 Run notebooks in this order:
@@ -81,9 +92,13 @@ Run notebooks in this order:
 - Saves `datasets/realistic_marketing_dataset.csv`.
 - Saves `results/realism_exploration/realism_comparison_summary.csv`.
 
-7. `notebooks/07_realism_exploration.ipynb`
-- Evaluates and summarizes realism-focused outputs.
-- Saves summary tables under `results/realism_exploration/`.
+7. `notebooks/07_realism_validation.ipynb`
+- Validates realism quality versus cleaned baseline using distribution checks, relationship checks, business rules, segment fidelity, and detectability.
+- Saves validation scorecards under `results/realism_validation/`.
+
+8. `notebooks/08_realism_analyses.ipynb`
+- Runs full bivariate + multivariate analyses on the realism-injected dataset.
+- Saves analysis outputs under `results/realism_analyses/`.
 
 ## Script Workflow (Recommended for Fast Reproducible Runs)
 Use scripts when you want faster execution outside notebooks.
@@ -141,9 +156,12 @@ pip install pandas numpy matplotlib seaborn scikit-learn scipy kagglehub
 - Realism-augmented dataset saved to `datasets/realistic_marketing_dataset.csv`
 - Realism comparison summary saved to `results/realism_exploration/realism_comparison_summary.csv`
 - Realism exploration final summary saved to `results/realism_exploration/final_summary.csv`
+- Realism validation scorecard saved to `results/realism_validation/realism_validation_overview.csv`
+- Synthetic detectability summary saved to `results/realism_validation/synthetic_detectability.csv`
 - Bivariate summary CSV saved to `results/bivariate_analysis/bivariate_final_summary.csv`
 - Multivariate summary CSV saved to `results/multivariate_analysis/multivariate_final_summary.csv`
-- Notebook-generated charts saved under `results/bivariate_analysis/`, `results/multivariate_analysis/`, and `results/realism_exploration/`
+- Realism-branch analysis summaries saved under `results/realism_analyses/bivariate_analysis/` and `results/realism_analyses/multivariate_analysis/`
+- Notebook-generated charts saved under `results/bivariate_analysis/`, `results/multivariate_analysis/`, `results/realism_exploration/`, `results/realism_validation/`, and `results/realism_analyses/`
 - Script-generated summaries and charts saved under `results/initial_exploration/`, `results/clean_and_validate/`, `results/bivariate_analysis/`, and `results/multivariate_analysis/`
 
 ## License
